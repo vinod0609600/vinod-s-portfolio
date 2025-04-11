@@ -32,16 +32,34 @@ nav {
 }
 
 nav a {
-  color: #0085cc;
-  text-decoration: none;
-  margin: 0 10px;
-  font-weight: bold;
-  /* transition: all 0.2s ease; */
-}
-nav a:hover{
+    color: #0085cc;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+    transition: color 0.3s ease;
+  }
+  
+  nav a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #00ccff;
+    transition: width 0.3s ease;
+  }
+  
+  nav a:hover {
     color: #fff;
-    transform: scale(1.2);
-}
+  }
+  
+  nav a:hover::after {
+    width: 100%;
+  }
+  
 
 .section {
   padding: 40px 0;
@@ -67,9 +85,7 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  text-decoration: underline;
-}
+
 
 footer {
   background: #222;
