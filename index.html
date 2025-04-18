@@ -3,84 +3,345 @@
 <head>
   <meta charset="UTF-8">
   <title>Vinod Sadula | Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/typewriter-effect@2.18.0/dist/core.js"></script> <!-- Typewriter.js -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      background: linear-gradient(120deg, #1e1e2f, #2c3e50);
+      color: #eee;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 2.5rem 1rem;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+    }
+
+    header h1 span {
+      color: #00f0ff;
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    nav {
+      margin-top: 1.5rem;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: #00f0ff;
+      transition: 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    .section {
+      margin-top: 3rem;
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 12px;
+      backdrop-filter: blur(5px);
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #00f0ff;
+    }
+
+    ul li {
+      margin-bottom: 1rem;
+    }
+
+    a {
+      color: #5fd0ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      nav a {
+        display: block;
+        margin: 0.5rem 0;
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+      }
+    }
+
+    /* Scroll reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Particle background */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .badge {
+      background-color: #00bcd4;
+      color: white;
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      margin-left: 1rem;
+    }
+
+    li span {
+      font-size: 1.3rem;
+      margin-right: 0.5rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: #0077cc;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: #00bcd4;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <h1>Hi, I'm <span>Vinod Sadula</span></h1>
-      <p>Aspiring AI Engineer & Web Developer</p>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#certifications">Certifications</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
 
-  <section id="about" class="section">
-    <div class="container">
-      <h2>About Me</h2>
-      <p>
-        I'm currently pursuing a B.Tech in Computer Science and Engineering (CSE) at Marri Laxman Reddy Institute of Technology, Hyderabad.
-        I previously completed a Diploma in Mining Engineering from Govt Polytechnic, Kothagudem.
-        I'm passionate about Web Development and Data Structures & Algorithms, and I love building efficient and elegant digital solutions.
-      </p>
-    </div>
-  </section>
+<div id="particles-js"></div>
 
-  <section id="skills" class="section">
-    <div class="container">
-      <h2>Skills</h2>
-      <ul>
-        <li><strong>Programming:</strong> Java, Python, C</li>
-        <li><strong>Web:</strong> HTML, CSS, JavaScript</li>
-        <li><strong>Database:</strong> SQL</li>
-        <li><strong>Tools:</strong> Git, GitLab, Jupyter Notebook, VS Code</li>
-        <li><strong>Operating Systems:</strong> Linux, Windows</li>
-      </ul>
-    </div>
-  </section>
+<header>
+  <div class="container">
+    <h1 id="name"></h1> <!-- Added an ID for typing effect -->
+    <p>Aspiring AI Engineer & Web Developer</p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
 
-  <section id="projects" class="section">
-    <div class="container">
-      <h2>Projects</h2>
-      <ul>
-        <li><strong>📧 Email Spam Detection System</strong> – Built using Logistic Regression with advanced text preprocessing.</li>
-        <li><strong>🛒 Flipkart Homepage Clone</strong> – Recreated the Flipkart homepage UI with responsive layout and nav bar.</li>
-        <li><strong>📱 Smart Laundry App</strong> – Android app for managing laundry services with features like order tracking and notifications.</li>
-      </ul>
-    </div>
-  </section>
+<section id="about" class="section container reveal">
+  <h2>About Me</h2>
+  <p>
+    I'm currently pursuing a B.Tech in Computer Science and Engineering (CSE) at Marri Laxman Reddy Institute of Technology, Hyderabad.
+    I previously completed a Diploma in Mining Engineering from Govt Polytechnic, Kothagudem.
+    I'm passionate about Web Development and Data Structures & Algorithms, and I love building efficient and elegant digital solutions.
+  </p>
+</section>
 
-  <section id="certifications" class="section">
-    <div class="container">
-      <h2>Certifications</h2>
-      <ul>
-        <li>NPTEL – Data Structures and Algorithms using Java</li>
-        <li>CISCO – Programming Essentials in Python</li>
-        <li>CISCO – Data Analytics Essentials</li>
-        <li>AICTE Certified</li>
-      </ul>
-    </div>
-  </section>
+<section id="skills" class="section container reveal">
+  <h2>Skills</h2>
+  <ul>
+    <li><strong>Programming:</strong> Java, Python, C</li>
+    <li><strong>Web:</strong> HTML, CSS, JavaScript</li>
+    <li><strong>Database:</strong> SQL</li>
+    <li><strong>Tools:</strong> Git, GitLab, Jupyter Notebook, VS Code</li>
+    <li><strong>Operating Systems:</strong> Linux, Windows</li>
+  </ul>
+</section>
 
-  <section id="contact" class="section">
-    <div class="container">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:Sadulavinod06@gmail.com">Sadulavinod06@gmail.com</a></p>
-      <p>Phone: <a href="tel:+919704405296">9704405296</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/vinod-sadula-5753402bb/" target="_blank">vinod-sadula</a></p>
-      <p><a href="Vinod_resume.pdf" target="_blank">📄 Download My Resume</a></p>
-    </div>
-  </section>
+<section id="projects" class="section container reveal">
+  <h2>Projects</h2>
+  <ul>
+    <li><strong>📧 Email Spam Detection System</strong> – Built using Logistic Regression with advanced text preprocessing.</li>
+    <li><strong>🛒 Flipkart Homepage Clone</strong> – Recreated the Flipkart homepage UI with responsive layout and nav bar.</li>
+    <li><strong>📱 Smart Laundry App</strong> – Android app for managing laundry services with features like order tracking and notifications.</li>
+  </ul>
+</section>
 
-  <footer>
-    <div class="container">
-      <p>© 2025 Vinod Sadula. All rights reserved.</p>
-    </div>
-  </footer>
+<section id="certifications" class="section container reveal">
+  <h2>Certifications</h2>
+  <ul>
+    <li>
+      <span>🎓</span>
+      <a href="https://onlinecourses.nptel.ac.in/noc23-cs97/preview" target="_blank" rel="noopener noreferrer">NPTEL – Data Structures and Algorithms using Java</a>
+      <span class="badge">✅ Verified</span>
+    </li>
+    <li>
+      <span>💻</span>
+      <a href="https://www.netacad.com/courses/python" target="_blank" rel="noopener noreferrer">CISCO – Programming Essentials in Python</a>
+      <span class="badge">✅ Verified</span>
+    </li>
+    <li>
+      <span>📊</span>
+      <a href="https://skillsforall.com/course/data-analytics-essentials" target="_blank" rel="noopener noreferrer">CISCO – Data Analytics Essentials</a>
+      <span class="badge">✅ Verified</span>
+    </li>
+    <li>
+      <span>🏅</span>
+      <a href="https://internship.aicte-india.org/" target="_blank" rel="noopener noreferrer">AICTE Certified</a>
+      <span class="badge">✅ Verified</span>
+    </li>
+  </ul>
+</section>
+
+<section id="contact" class="section container reveal">
+  <h2>Contact</h2>
+  <p>Email: <a href="mailto:Sadulavinod06@gmail.com">Sadulavinod06@gmail.com</a></p>
+  <p>Phone: <a href="tel:+919704405296">9704405296</a></p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/vinod-sadula-5753402bb/" target="_blank">vinod-sadula</a></p>
+  <p><a href="Vinod_resume.pdf" target="_blank">📄 Download My Resume</a></p>
+</section>
+
+<footer>
+  <p>© 2025 Vinod Sadula. All rights reserved.</p>
+</footer>
+
+<!-- Scroll Reveal Script -->
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  window.addEventListener('scroll', () => {
+    reveals.forEach(el => {
+      const top = el.getBoundingClientRect().top;
+      if (top < window.innerHeight - 100) {
+        el.classList.add('active');
+      }
+    });
+  });
+
+  // Typing animation
+  const typewriter = new Typewriter('#name', {
+    loop: true,
+    delay: 75,
+  });
+
+  typewriter.typeString('Vinod Sadula')
+    .pauseFor(2000)
+    .deleteAll()
+    .typeString('Aspiring AI Engineer & Web Developer')
+    .pauseFor(2000)
+    .deleteAll();
+</script>
+
+<!-- Particles.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+  particlesJS('particles-js', {
+    particles: {
+      number: {
+        value: 80,
+        density: { enable: true, value_area: 800 }
+      },
+      color: { value: "#00bcd4" },
+      shape: {
+        type: "circle",
+        stroke: { width: 0, color: "#000000" },
+        polygon: { nb_sides: 5 }
+      },
+      opacity: {
+        value: 0.5,
+        random: false,
+        anim: { enable: true, speed: 1, opacity_min: 0, sync: false }
+      },
+      size: {
+        value: 3,
+        random: true,
+        anim: { enable: false }
+      },
+      line_linked: {
+        enable: true,
+        distance: 150,
+        color: "#00bcd4",
+        opacity: 0.4,
+        width: 1
+      },
+      move: {
+        enable: true,
+        speed: 3,
+        direction: "none",
+        random: false,
+        straight: false,
+        out_mode: "out",
+        attract: { enable: false }
+      }
+    },
+    interactivity: {
+      detect_on: "canvas",
+      events: {
+        onhover: { enable: true, mode: "repulse" },
+        onclick: { enable: true, mode: "push" },
+        resize: true
+      },
+      modes: {
+        repulse: { distance: 100, duration: 0.4 },
+        push: { particles_nb: 4 }
+      }
+    },
+    retina_detect: true
+  });
+</script>
+
 </body>
 </html>
